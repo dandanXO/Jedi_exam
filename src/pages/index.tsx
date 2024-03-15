@@ -1,11 +1,15 @@
+import Layout from '../components/Layout';
+
 export default function Home() {
-  return (
-    <main className="bg-amber-50 p-4 min-h-screen">
-      <div className="p-4 max-w-[720px] mx-auto bg-white rounded shadow">
-        <h1 className="font-bold text-4xl text-center">
-          Frontend Engineer Assessment
-        </h1>
-        <p className="mt-6">
+  const Header = () => (
+   
+      <h1 className="font-bold text-4xl text-center">
+        Frontend Engineer Assessment
+      </h1>
+  );
+  const Introductions = () => (
+    <>
+      <p className="mt-6">
           Welcome to our frontend engineer assessment! This test is designed to
           evaluate your frontend development skills and related knowledge.
         </p>
@@ -18,38 +22,55 @@ export default function Home() {
           that you think is appropriate.
         </p>
         <p className="mt-4">Here's the requirements for the assessment:</p>
-        <ul className="list-decimal pl-6">
-          <li className="mt-1">
-            <strong>NEVER</strong> change anything in the directories named in
-            the pattern
-            <span className="font-bold inline mx-1 py-0.5 px-1.5 border border-amber-400 bg-amber-50 rounded">
-              **/api/**
-            </span>
-          </li>
-          <li className="mt-1">Style with tailwindcss and css file.</li>
-          <li className="mt-1">
-            Use
-            <span className="font-bold inline mx-1 py-0.5 px-1.5 border border-amber-400 bg-amber-50 rounded">
-              axios
-            </span>
-            to fetch data
-          </li>
-          <li className="mt-1">
-            Implement Responsive Web Design (RWD) with a breakpoint at 768px (md
-            in tailwindcss default breakpoints)
-          </li>
-          <li className="mt-1">
-            <p>
-              Submit the URL of your answer repository by
-              <strong className="mx-1">
-                23:59 on the 5th day after receiving the questions,
-              </strong>
-              and cease answering (pushing commits). For example: if you receive
-              the questions on Mar 1st, you should submit the answer by 23:59 on
-              Mar 5th.
-            </p>
-          </li>
-        </ul>
+    </>
+  );
+  const requirements = [
+    ` <strong>NEVER</strong> change anything in the directories named in
+    the pattern
+    <span className="font-bold inline mx-1 py-0.5 px-1.5 border border-amber-400 bg-amber-50 rounded">
+      **/api/**
+    </span>`,
+    `<li className="mt-1">Style with tailwindcss and css file.</li>`,
+    ` <li className="mt-1">
+    Use
+    <span className="font-bold inline mx-1 py-0.5 px-1.5 border border-amber-400 bg-amber-50 rounded">
+      axios
+    </span>
+    to fetch data
+  </li>`,
+    `<li className="mt-1">
+    Implement Responsive Web Design (RWD) with a breakpoint at 768px (md
+    in tailwindcss default breakpoints)
+    </li>`,
+    `<li className="mt-1">
+    <p>
+      Submit the URL of your answer repository by
+      <strong className="mx-1">
+        23:59 on the 5th day after receiving the questions,
+      </strong>
+      and cease answering (pushing commits). For example: if you receive
+      the questions on Mar 1st, you should submit the answer by 23:59 on
+      Mar 5th.
+        </p>
+      </li>`
+  ];
+  const Requirements = () => (
+    <ul className="list-decimal pl-6">
+      {requirements.map((requirement, index) => (
+        <div key={index} className="mt-1">
+          <div dangerouslySetInnerHTML={{ __html: requirement }} />
+        </div>
+      ))}
+    </ul>
+  );
+        
+  return (
+    <Layout>
+    <div className="bg-amber-50 p-4 min-h-screen">
+      <div className="p-4 max-w-[720px] mx-auto bg-white rounded shadow">
+        <Header></Header>
+        <Introductions></Introductions>
+        <Requirements></Requirements>
         <p className="mt-4">Good luck! Let's get started.</p>
         <div className="mt-6 border-t pt-6">
           <h2 className="text-xl font-bold">Problem 1: Refactoring</h2>
@@ -180,6 +201,7 @@ export default function Home() {
           </ul>
         </div>
       </div>
-    </main>
+    </div>
+    </Layout>
   );
 }
